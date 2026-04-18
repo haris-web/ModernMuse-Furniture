@@ -311,3 +311,23 @@ theme: {
 5. **Gold color**: Only used for accent — CTAs, stars, tag labels, "More Info" links, add button hover
 6. **No inline styles** — use Tailwind classes only
 7. **Carousel auto-play**: `setInterval` every 3000ms, clear on unmount with `useEffect` cleanup
+
+## Advanced Features Summary
+
+| Feature | Library | Component |
+|---|---|---|
+| Scroll animations | framer-motion `whileInView` | All sections |
+| Word-by-word reveal | framer-motion `motion.span` | HeroSection |
+| Parallax background | framer-motion `useScroll` + `useTransform` | HeroSection |
+| Sticky navbar transition | custom hook + Tailwind | Navbar |
+| Dark mode toggle | localStorage + `classList` | Navbar + layout |
+| Custom gold cursor | framer-motion `useMotionValue` | CustomCursor |
+| Embla carousel | embla-carousel-react | BestSelling |
+| Auto-play carousel | embla-carousel-autoplay | BestSelling |
+| Skeleton loader | Tailwind `animate-pulse` | BestSelling |
+| Quick view modal | framer-motion `AnimatePresence` | ProductModal |
+| Toast notifications | react-hot-toast | BestSelling + Modal |
+| Smooth scroll | @lenis/react `ReactLenis` | layout |
+| Card hover lift | framer-motion `whileHover` | ClientReviews + Products |
+
+---

@@ -1,4 +1,6 @@
 import Image from "next/image";
+import MotionHover from "@/components/MotionHover";
+import MotionInView from "@/components/MotionInView";
 
 type Review = {
   id: string;
@@ -62,16 +64,19 @@ export default function ClientReviews() {
   return (
     <section className="bg-light py-16 px-6 md:px-16">
       <div className="mx-auto max-w-7xl">
-        <div className="text-center">
+        <MotionInView className="text-center">
           <div className="text-xs font-semibold tracking-[0.25em] uppercase text-gold">
             TESTIMONIALS
           </div>
           <h2 className="mt-2 font-display text-3xl font-semibold text-foreground">
             Our Client Reviews
           </h2>
-        </div>
+        </MotionInView>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <MotionInView
+          className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          delay={0.05}
+        >
           {reviews.map((review) => {
             const initials = review.name
               .split(" ")
@@ -81,49 +86,49 @@ export default function ClientReviews() {
               .toUpperCase();
 
             return (
-              <article
-                key={review.id}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm"
-              >
-                <div className="relative h-44 w-full bg-gray-200">
-                  <Image
-                    src={review.imageSrc}
-                    alt={review.imageAlt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
-                  />
-                </div>
+              <MotionHover key={review.id} className="h-full">
+                <article className="h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+                  <div className="relative h-44 w-full bg-gray-200">
+                    <Image
+                      src={review.imageSrc}
+                      alt={review.imageAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
+                  </div>
 
-                <div className="p-5">
-                  <div className="flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-gold text-white font-semibold text-sm grid place-items-center">
-                      {initials}
-                    </div>
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold text-foreground">
-                        {review.name}
+                  <div className="p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="h-9 w-9 rounded-full bg-gold text-white font-semibold text-sm grid place-items-center">
+                        {initials}
                       </div>
-                      <div className="text-xs text-gray-400">{review.role}</div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-foreground">
+                          {review.name}
+                        </div>
+                        <div className="text-xs text-gray-400">
+                          {review.role}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="mt-3 mb-3 text-sm text-gray-500 leading-relaxed">
+                      {review.text}
+                    </p>
+                    <div
+                      className="text-gold text-xs tracking-wide"
+                      aria-label={`${review.rating} out of 5 stars`}
+                    >
+                      {stars(review.rating)}
                     </div>
                   </div>
-
-                  <p className="mt-3 mb-3 text-sm text-gray-500 leading-relaxed">
-                    {review.text}
-                  </p>
-                  <div
-                    className="text-gold text-xs tracking-wide"
-                    aria-label={`${review.rating} out of 5 stars`}
-                  >
-                    {stars(review.rating)}
-                  </div>
-                </div>
-              </article>
+                </article>
+              </MotionHover>
             );
           })}
-        </div>
+        </MotionInView>
       </div>
     </section>
   );
 }
-

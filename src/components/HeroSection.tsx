@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import HeroHeading from "@/components/HeroHeading";
 
 function SearchIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -36,13 +37,10 @@ export default function HeroSection() {
 
       <div className="relative z-[1] px-6 md:px-16 pt-28 md:pt-32">
         <div className="mx-auto max-w-3xl flex flex-col items-center text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight text-white">
-            Make Your Interior More Minimalistic &amp; Modern
-          </h1>
-          <p className="mt-4 max-w-md text-sm md:text-base text-white/70 leading-relaxed">
-            Turn your room with panto into a lot more minimalist and modern with
-            ease and speed.
-          </p>
+          <HeroHeading
+            title="Make Your Interior More Minimalistic & Modern"
+            subtitle="Turn your room with panto into a lot more minimalist and modern with ease and speed."
+          />
 
           <form
             className="mt-8 w-full max-w-md"

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
+import PageLoadFeedback from "@/components/PageLoadFeedback";
+import ThemeInit from "@/components/ThemeInit";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -27,6 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="min-h-screen font-sans antialiased bg-background text-foreground">
+        <ThemeInit />
+        <PageLoadFeedback />
         {children}
       </body>
     </html>

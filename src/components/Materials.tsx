@@ -1,9 +1,13 @@
 import Image from "next/image";
+import MotionInView from "@/components/MotionInView";
 
 export default function Materials() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 min-h-[420px]">
-      <div className="flex flex-col justify-center px-6 md:px-16 py-16">
+      <MotionInView
+        className="flex flex-col justify-center px-6 md:px-16 py-16"
+        delay={0.05}
+      >
         <div className="text-xs font-semibold tracking-[0.25em] uppercase text-gold mb-4">
           MATERIALS
         </div>
@@ -21,9 +25,12 @@ export default function Materials() {
         >
           More Info <span aria-hidden="true">→</span>
         </a>
-      </div>
+      </MotionInView>
 
-      <div className="grid grid-cols-2 grid-rows-2 gap-2 p-6 md:p-8">
+      <MotionInView
+        className="grid grid-cols-2 grid-rows-2 gap-2 p-6 md:p-8"
+        delay={0.1}
+      >
         <div className="relative row-span-2 overflow-hidden rounded-xl">
           <Image
             src="https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=1200"
@@ -51,8 +58,7 @@ export default function Materials() {
             className="object-cover"
           />
         </div>
-      </div>
+      </MotionInView>
     </section>
   );
 }
-

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import MotionHover from "@/components/MotionHover";
 
 type Filter = "All" | "Chair" | "Beds" | "Sofa" | "Lamp";
 
@@ -206,38 +207,37 @@ export default function ShopCatalog() {
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredItems.map((item) => (
-          <article
-            key={item.id}
-            className="rounded-2xl bg-white p-5 shadow-sm border border-gray-100"
-          >
-            <div className="relative h-44 w-full overflow-hidden rounded-xl bg-gray-100">
-              <Image
-                src={item.imageSrc}
-                alt={item.imageAlt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="mt-4 text-xs text-gray-400 uppercase tracking-wide">
-              {item.category}
-            </div>
-            <div className="mt-1 text-base font-semibold text-foreground">
-              {item.name}
-            </div>
-            <div className="mt-4 flex items-center justify-between">
-              <div className="text-lg font-semibold text-foreground">
-                ${item.price}
+          <MotionHover key={item.id} className="h-full">
+            <article className="h-full rounded-2xl bg-white p-5 shadow-sm border border-gray-100">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.imageAlt}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
               </div>
-              <button
-                type="button"
-                className="h-9 w-9 rounded-full bg-dark text-white grid place-items-center text-lg hover:brightness-110 transition"
-                aria-label={`Add ${item.name} to cart`}
-              >
-                +
-              </button>
-            </div>
-          </article>
+              <div className="mt-4 text-xs text-gray-400 uppercase tracking-wide">
+                {item.category}
+              </div>
+              <div className="mt-1 text-base font-semibold text-foreground">
+                {item.name}
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <div className="text-lg font-semibold text-foreground">
+                  ${item.price}
+                </div>
+                <button
+                  type="button"
+                  className="h-9 w-9 rounded-full bg-dark text-white grid place-items-center text-lg hover:brightness-110 transition"
+                  aria-label={`Add ${item.name} to cart`}
+                >
+                  +
+                </button>
+              </div>
+            </article>
+          </MotionHover>
         ))}
       </div>
     </div>

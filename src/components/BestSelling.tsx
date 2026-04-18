@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
+import MotionHover from "@/components/MotionHover";
 
 type Category = "Chair" | "Beds" | "Sofa" | "Lamp";
 
@@ -278,43 +279,42 @@ export default function BestSelling() {
             ].join(" ")}
           >
             {displayProducts.map((product) => (
-              <article
-                key={product.id}
-                className="bg-white rounded-2xl p-5 shadow-sm"
-              >
-                <div className="relative h-44 w-full overflow-hidden rounded-xl bg-gray-100 mb-4">
-                  <Image
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="text-xs text-gray-400 uppercase tracking-wide">
-                  {product.categoryLabel}
-                </div>
-                <div className="mt-1 text-base font-semibold text-foreground">
-                  {product.name}
-                </div>
-                <div className="mt-2">
-                  <Stars rating={product.rating} />
-                </div>
-
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="text-lg font-semibold text-foreground">
-                    ${product.price}
+              <MotionHover key={product.id} className="h-full">
+                <article className="h-full bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+                  <div className="relative h-44 w-full overflow-hidden rounded-xl bg-gray-100 mb-4">
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.imageAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
                   </div>
-                  <button
-                    type="button"
-                    aria-label={`Add ${product.name} to cart`}
-                    className="h-8 w-8 rounded-full bg-dark text-white grid place-items-center text-xl hover:brightness-110 transition"
-                  >
-                    +
-                  </button>
-                </div>
-              </article>
+
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">
+                    {product.categoryLabel}
+                  </div>
+                  <div className="mt-1 text-base font-semibold text-foreground">
+                    {product.name}
+                  </div>
+                  <div className="mt-2">
+                    <Stars rating={product.rating} />
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between">
+                    <div className="text-lg font-semibold text-foreground">
+                      ${product.price}
+                    </div>
+                    <button
+                      type="button"
+                      aria-label={`Add ${product.name} to cart`}
+                      className="h-8 w-8 rounded-full bg-dark text-white grid place-items-center text-xl hover:brightness-110 transition"
+                    >
+                      +
+                    </button>
+                  </div>
+                </article>
+              </MotionHover>
             ))}
           </div>
         </div>

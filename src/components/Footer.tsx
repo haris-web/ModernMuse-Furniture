@@ -1,3 +1,5 @@
+import MotionInView from "@/components/MotionInView";
+
 const services = ["Email Marketing", "Campaigns", "Branding"];
 const furniture = [
   { label: "Beds", href: "/furniture" },
@@ -9,7 +11,7 @@ const socials = ["Facebook", "Twitter", "Instagram"];
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 pt-14 pb-8 px-6 md:px-16">
-      <div className="mx-auto max-w-7xl">
+      <MotionInView className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-10 mb-10">
           <div>
             <div className="font-display text-xl font-bold text-foreground">
@@ -79,7 +81,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-      </div>
+      </MotionInView>
     </footer>
   );
 }
